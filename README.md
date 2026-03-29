@@ -1,4 +1,4 @@
-# FactCheck AI — Multi-Source Autonomous Fact Checker
+# FactCheck AI: Multi-Source Autonomous Fact Checker
 
 ![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![LangGraph](https://img.shields.io/badge/LangGraph-0.1%2B-purple)
@@ -6,9 +6,9 @@
 ![Tavily Search](https://img.shields.io/badge/Tavily-Search-orange)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.35%2B-red)
 
-FactCheck AI is an autonomous multi-source fact-checking agent that verifies any claim by deconstructing it into atomic sub-claims, searching the web for evidence, evaluating each sub-claim with a confidence score, detecting logical fallacies, and producing a comprehensive structured report — all in a single pipeline run.
+FactCheck AI is an autonomous multi-source fact-checking agent that verifies any claim by deconstructing it into atomic sub-claims, searching the web for evidence, evaluating each sub-claim with a confidence score, detecting logical fallacies, and producing a comprehensive structured report, all in a single pipeline run.
 
-What makes FactCheck AI unique is its **conditional routing loop**: after initial evidence gathering and evaluation, the LangGraph state machine checks whether any sub-claim has a confidence score below 60%. If so, the agent automatically generates more targeted search queries and performs a second pass of deep research before proceeding — up to 2 extra iterations. This ensures low-confidence claims receive additional scrutiny without spiralling into infinite loops.
+What makes FactCheck AI unique is its **conditional routing loop**: after initial evidence gathering and evaluation, the LangGraph state machine checks whether any sub-claim has a confidence score below 60%. If so, the agent automatically generates more targeted search queries and performs a second pass of deep research before proceeding, up to 2 extra iterations. This ensures low-confidence claims receive additional scrutiny without spiralling into infinite loops.
 
 ---
 
@@ -19,17 +19,17 @@ Claim Input
     │
     ▼
 ┌─────────────────┐
-│  Deconstructor  │ — Breaks claim into atomic sub-claims
+│  Deconstructor  │ —> Breaks claim into atomic sub-claims
 └────────┬────────┘
          │
          ▼
 ┌─────────────────┐
-│   Researcher    │ — Searches for + and - evidence per sub-claim
+│   Researcher    │ —> Searches for + and - evidence per sub-claim
 └────────┬────────┘
          │
          ▼
 ┌─────────────────┐
-│    Evaluator    │ — Verdicts + confidence per sub-claim
+│    Evaluator    │ —> Verdicts + confidence per sub-claim
 └────────┬────────┘
          │
     ┌────▼────────────────────────────┐
@@ -124,8 +124,8 @@ Use the **⚡ Example claims** in the sidebar to try pre-loaded examples instant
 
 ## Cost Estimates
 
-Each fact-check costs approximately **$0.01–$0.05** with GPT-4o depending on:
-- Number of sub-claims generated (3–6 typically)
+Each fact-check costs approximately **$0.01-$0.05** with GPT-4o depending on:
+- Number of sub-claims generated (3-6 typically)
 - Whether deep research iterations are triggered
 - Length of the final report
 
@@ -135,9 +135,9 @@ Complex claims with multiple deep research passes may cost up to $0.10.
 
 ## Extending the Project
 
-1. **Source credibility scoring** — integrate domain authority APIs or a known-bias database (e.g., AllSides, Media Bias/Fact Check) to weight source quality in confidence calculations
-2. **Styled PDF export** — use `reportlab` or `weasyprint` to generate a branded PDF fact-check certificate users can share
-3. **Historical claims database** — add a SQLite cache that stores past fact-checks by claim hash, enabling instant results for previously checked claims and trend analysis
-4. **Browser extension** — build a Chrome/Firefox extension that highlights claims on any web page and sends them to a deployed FactCheck AI API endpoint for inline verification
+1. **Source credibility scoring**: integrate domain authority APIs or a known-bias database (e.g., AllSides, Media Bias/Fact Check) to weight source quality in confidence calculations
+2. **Styled PDF export**: use `reportlab` or `weasyprint` to generate a branded PDF fact-check certificate users can share
+3. **Historical claims database**: add a SQLite cache that stores past fact-checks by claim hash, enabling instant results for previously checked claims and trend analysis
+4. **Browser extension**: build a Chrome/Firefox extension that highlights claims on any web page and sends them to a deployed FactCheck AI API endpoint for inline verification
 
 ---
